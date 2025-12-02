@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon Phase</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 20px;
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="moon-phase-widget" data-color="#1a1a1a" data-style="normal"></div>
+    <script async src="https://cdn.jsdelivr.net/npm/moon-phase-widget@1.5.0/build/automount.min.js"></script>
+</body>
+</html>
+```
+
+- Click "Commit changes"
+
+**3. Enable GitHub Pages:**
+- Go to repository "Settings"
+- Scroll to "Pages" (left sidebar)
+- Under "Source" select "Deploy from a branch"
+- Branch: select **main** (or master)
+- Folder: **/ (root)**
+- Click "Save"
+
+**4. Get your URL:**
+After 1-2 minutes, your widget will be live at:
+```
+https://YOUR-GITHUB-USERNAME.github.io/moon-widget/
