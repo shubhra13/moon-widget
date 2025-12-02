@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon Phase - Warm Earth</title>
+    <title>Moon Phase - Minimal Light</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
         
         body { 
-            background: linear-gradient(135deg, #3d2c2e 0%, #1a1410 100%);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,24 +21,28 @@
             padding: 20px;
         }
         
-        #moon-phase-widget {
-            background: rgba(245, 230, 211, 0.08);
+        .widget-container {
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            max-width: 100%;
-            width: auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        /* Hide the learn more link */
-        #moon-phase-widget a[href*="moon"] {
+        /* Hide external links and ads */
+        .widget-container a[href*="phaseofthemoontoday"],
+        .widget-container a[target="_blank"],
+        .widget-container [class*="ad"],
+        .widget-container [class*="sponsored"] {
             display: none !important;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            #moon-phase-widget {
+            .widget-container {
                 padding: 20px;
                 border-radius: 20px;
             }
@@ -49,20 +53,42 @@
                 padding: 15px;
             }
             
-            #moon-phase-widget {
+            .widget-container {
                 padding: 15px;
                 border-radius: 16px;
             }
         }
         
-        /* Make widget content responsive */
-        #moon-phase-widget * {
+        .widget-container * {
             max-width: 100% !important;
         }
     </style>
 </head>
 <body>
-    <div id="moon-phase-widget" data-color="#f5e6d3"></div>
-    <script async src="https://cdn.jsdelivr.net/npm/moon-phase-widget@1.5.0/build/automount.min.js"></script>
+    <div class="widget-container">
+        <script 
+            src="https://widget.phaseofthemoontoday.com/embed.js" 
+            data-theme="light" 
+            data-size="large" 
+            data-style="detailed"
+            data-location="auto">
+        </script>
+    </div>
+    
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const links = document.querySelectorAll('a[href*="phaseofthemoontoday"], a[target="_blank"]');
+                links.forEach(link => link.remove());
+                
+                const ads = document.querySelectorAll('[class*="ad"], [class*="sponsor"]');
+                ads.forEach(ad => {
+                    if (!ad.querySelector('script')) {
+                        ad.style.display = 'none';
+                    }
+                });
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
